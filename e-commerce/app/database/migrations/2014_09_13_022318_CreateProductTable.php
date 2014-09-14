@@ -21,7 +21,7 @@ class CreateProductTable extends Migration {
 			$table->float("price");
 			$table->integer("category_id");
 			$table->dateTime("created_at");
-			$table->dateTime("update_at");
+			$table->dateTime("updated_at");
 			$table->dateTime("deleted_at");
 		});
 	}
