@@ -15,3 +15,13 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::any("category/index", [
+	"as" 	=> 	"category/index",
+	"uses"	=> 	"CategoryController@indexAction"
+]);
+
+Route::any("product/index",[
+	"as"	=>	"product/index",
+	"uses"	=>	"ProductController@indexAction"
+]);
