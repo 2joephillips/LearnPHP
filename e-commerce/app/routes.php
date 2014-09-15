@@ -25,3 +25,8 @@ Route::any("product/index",[
 	"as"	=>	"product/index",
 	"uses"	=>	"ProductController@indexAction"
 ]);
+
+Rout::any("account/authenticate", [
+	"as"	=>	"account/authenticate",
+	"uses"	=>	"AccountController@authenticateAction"
+]);
