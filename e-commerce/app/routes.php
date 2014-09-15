@@ -30,3 +30,8 @@ Route::any("account/authenticate", [
 	"as"	=>	"account/authenticate",
 	"uses"	=>	"AccountController@authenticateAction"
 ]);
+
+Route::any("order/index", [
+	"as" 	=>	"order/index",
+	"uses"	=>	"OrderController@indexAction"
+]);
