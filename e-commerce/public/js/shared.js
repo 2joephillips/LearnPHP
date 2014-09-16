@@ -128,7 +128,20 @@ app.controller("main", function($scope){
 
 });
 
-app.controller("basket", function($scope){
+app.controller("basket", function($scope, BasketService) {
 
+  var self = this;
+
+  this.products = BasketService.getProducts();
+
+  this.update = function() {
+    BasketService.update();
+  };
+
+  this.remove = function(product) {
+    BasketService.remove(product);
+  };
+
+	$scope.basket = this;
 });
 
