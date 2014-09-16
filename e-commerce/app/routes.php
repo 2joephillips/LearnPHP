@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::any("/", [
+  "as"   => "index/index",
+  "uses" => "IndexController@indexAction"
+]);
 
 Route::any("category/index", [
 	"as" 	=> 	"category/index",
