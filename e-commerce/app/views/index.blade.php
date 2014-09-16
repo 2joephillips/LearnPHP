@@ -29,92 +29,60 @@
     	></script>
 
 	</head>
-  <body>
+<body ng-controller="main">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <h1>
-            Laravel 4 E-Commerce
+            E-Commerce
           </h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-8">
-          <h2>
-            Products
-          </h2>
-          <div class="categories btn-group">
-            <button
-              type="button"
-              class="category btn btn-default active"
-            >
-              All
-            </button>
-            <button
-              type="button"
-              class="category btn btn-default"
-            >
-              Category 1
-            </button>
-            <button
-              type="button"
-              class="category btn btn-default"
-            >
-              Category 2
-            </button>
-            <button
-              type="button"
-              class="category btn btn-default"
-            >
-              Category 3
-            </button>
-          </div>
-          <div class="products">
-            <div class="product media">
-              <button
-                type="button"
-                class="pull-left btn btn-default"
-              >
-                Add to basket
-              </button>
-              <div class="media-body">
-                <h4 class="media-heading">Product 1</h4>
-                <p>
-                  Price: 9.99, Stock: 10
-                </p>
-              </div>
-            </div>
-            <div class="product media">
-              <button
-                type="button"
-                class="pull-left btn btn-default"
-              >
-                Add to basket
-              </button>
-              <div class="media-body">
-                <h4 class="media-heading">Product 2</h4>
-                <p>
-                  Price: 9.99, Stock: 10
-                </p>
-              </div>
-            </div>
-            <div class="product media">
-              <button
-                type="button"
-                class="pull-left btn btn-default"
-              >
-                Add to basket
-              </button>
-              <div class="media-body">
-                <h4 class="media-heading">Product 3</h4>
-                <p>
-                  Price: 9.99, Stock: 10
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
+		<div class="col-md-8" ng-controller="products">
+		  <h2>
+		    Products
+		  </h2>
+		  <div class="categories btn-group">
+		    <button
+		      type="button"
+		      class="category btn btn-default active"
+		      ng-click="products.setCategory(null)"
+		      ng-class="{ 'active' : products.category == null}"
+		    >
+		      All
+		    </button>
+		    <button
+		      type="button"
+		      class="category btn btn-default"
+		      ng-repeat="category in products.categories"
+		      ng-click="products.setCategory(category)"
+		      ng-class="{ 'active' : products.category.id == category.id}"
+		    >
+		      @{{ category.name }}
+		    </button>
+		  </div>
+		  <div class="products">
+		    <div
+		      class="product media"
+		      ng-repeat="product in products.products | filter : products.filterByCategory"
+		    >
+		      <button
+		        type="button"
+		        class="pull-left btn btn-default"
+		      >
+		        Add to basket
+		      </button>
+		      <div class="media-body">
+		        <h4 class="media-heading">@{{ product.name }}</h4>
+		        <p>
+		          Price: @{{ product.price }}, Stock: @{{ product.stock }}
+		        </p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+        <div class="col-md-4" ng-controller="basket">
           <h2>
             Basket
           </h2>
